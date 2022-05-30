@@ -1,4 +1,5 @@
 import React from 'react';
+import Email from './Email';
 import Text from './Text';
 
 export default class PersonalInfo extends React.Component {
@@ -6,7 +7,7 @@ export default class PersonalInfo extends React.Component {
     return (
       <div className="div">
         <Text />
-        <div className="Email">Email</div>
+        <Email />
         <div className="Phone">Phone Number</div>
       </div>
     );
