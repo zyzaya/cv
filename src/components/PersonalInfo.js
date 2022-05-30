@@ -1,5 +1,6 @@
 import React from 'react';
 import Email from './Email';
+import PhoneNumber from './PhoneNumber';
 import Text from './Text';
 
 export default class PersonalInfo extends React.Component {
@@ -8,7 +9,8 @@ export default class PersonalInfo extends React.Component {
       <div className="div">
         <Text />
         <Email />
-        <div className="Phone">Phone Number</div>
+        <PhoneNumber />
+        <button type="submit">Finish</button>
       </div>
     );
   }
