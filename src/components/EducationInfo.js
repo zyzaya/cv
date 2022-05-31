@@ -11,6 +11,18 @@ export default class EducationInfo extends React.Component {
   }
 
   editInfo() {
+    if (this.state.edit) {
+      let info = [];
+      // for every section add to info
+      this.state.sections.map((val) =>
+        info.push({
+          name: val.name,
+          title: val.title,
+          date: val.date,
+        })
+      );
+      this.props.onEdit(info);
+    }
     this.setState({ edit: !this.state.edit });
   }
 
@@ -25,13 +37,24 @@ export default class EducationInfo extends React.Component {
     }));
   }
 
+  editSection(key, info) {
+    this.setState((state, props) => ({
+      sections: state.sections.map((e) => (e.key === key ? info : e)),
+    }));
+    console.log(info);
+  }
+
   render() {
     return (
       <div>
         <ul>
           {this.state.sections.map((e) => (
             <li key={e.key}>
-              <EducationSection edit={this.state.edit} />
+              <EducationSection
+                key={e.key}
+                edit={this.state.edit}
+                onChange={(info) => this.editSection(e.key, info)}
+              />
             </li>
           ))}
         </ul>
