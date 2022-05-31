@@ -6,7 +6,7 @@ export default class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <PersonalInfo edit={true} onEdit={() => console.log('hello')} />
+        <PersonalInfo edit={true} onEdit={(info) => console.log(info)} />
       </div>
     );
   }
