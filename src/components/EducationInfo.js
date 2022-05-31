@@ -8,6 +8,7 @@ export default class EducationInfo extends React.Component {
     this.state = { edit: props.edit, sections: [] };
     this.editInfo = this.editInfo.bind(this);
     this.addSection = this.addSection.bind(this);
+    this.deleteSection = this.deleteSection.bind(this);
   }
 
   editInfo() {
@@ -44,6 +45,12 @@ export default class EducationInfo extends React.Component {
     }));
   }
 
+  deleteSection(key) {
+    this.setState((state, props) => ({
+      sections: state.sections.filter((e) => e.key !== key),
+    }));
+  }
+
   render() {
     return (
       <div>
@@ -53,6 +60,7 @@ export default class EducationInfo extends React.Component {
               key={e.key}
               edit={this.state.edit}
               onChange={(info) => this.editSection(e.key, info)}
+              onDelete={() => this.deleteSection(e.key)}
             />
           ))}
         </ul>

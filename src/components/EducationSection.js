@@ -9,6 +9,7 @@ export default class EducationSection extends React.Component {
     this.changeTitle = this.changeTitle.bind(this);
     this.changeDate = this.changeDate.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
   }
 
   changeName(value) {
@@ -39,7 +40,16 @@ export default class EducationSection extends React.Component {
     this.props.onChange(info);
   }
 
+  handleDelete(e) {
+    this.props.onDelete();
+  }
+
   render() {
+    let remove = '';
+    if (this.props.edit) {
+      remove = <button onClick={this.handleDelete}>Delete</button>;
+    }
+
     return (
       <div>
         <Text
@@ -60,6 +70,7 @@ export default class EducationSection extends React.Component {
           edit={this.props.edit}
           onChange={this.changeDate}
         />
+        {remove}
       </div>
     );
   }
