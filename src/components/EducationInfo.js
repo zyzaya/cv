@@ -1,5 +1,4 @@
 import React from 'react';
-import Text from './Text';
 
 export default class EducationInfo extends React.Component {
   constructor(props) {
