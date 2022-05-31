@@ -4,7 +4,7 @@ import Text from './Text';
 export default class EducationSection extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { edit: props.edit, name: '', title: '', date: '' };
+    this.state = { name: '', title: '', date: '' };
     this.changeName = this.changeName.bind(this);
     this.changeTitle = this.changeTitle.bind(this);
     this.changeDate = this.changeDate.bind(this);
@@ -35,19 +35,19 @@ export default class EducationSection extends React.Component {
         <Text
           name="School Name"
           type="text"
-          edit={this.state.edit}
+          edit={this.props.edit}
           onChange={this.changeName}
         />
         <Text
           name="Title of Study"
           type="text"
-          edit={this.state.edit}
+          edit={this.props.edit}
           onChange={this.handleChange}
         />
         <Text
           name="Date of Study"
           type="date"
-          edit={this.state.edit}
+          edit={this.props.edit}
           onChange={this.handleChange}
         />
       </div>

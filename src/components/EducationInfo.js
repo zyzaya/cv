@@ -47,6 +47,7 @@ export default class EducationInfo extends React.Component {
   }
 
   render() {
+    console.log(this.state.edit);
     return (
       <div>
         <ul>
