@@ -16,14 +16,14 @@ export default class Text extends React.Component {
     if (this.props.edit)
       return (
         <div>
-          <label htmlFor="name">Name</label>
-          <input type="text" onChange={this.editValue} />
+          <label htmlFor="name">{this.props.name}</label>
+          <input type={this.props.type} onChange={this.editValue} />
         </div>
       );
     else
       return (
         <div className="">
-          <label htmlFor="name">Name</label>
+          <label htmlFor="name">{this.props.name}</label>
           <span>{this.state.value}</span>
         </div>
       );

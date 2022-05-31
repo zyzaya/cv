@@ -30,11 +30,23 @@ export default class PersonalInfo extends React.Component {
     return (
       <div className="div">
         <Text
+          name="Name"
+          type="text"
           edit={this.state.edit}
           onChange={(val) => this.setState({ name: val })}
         />
-        <Email />
-        <PhoneNumber />
+        <Text
+          name="Email"
+          type="email"
+          edit={this.state.edit}
+          onChange={(val) => this.setState({ email: val })}
+        />
+        <Text
+          name="Phone Number"
+          type="tel"
+          edit={this.state.edit}
+          onChange={(val) => this.setState({ phone: val })}
+        />
         <button type="submit" onClick={this.editInfo}>
           {this.state.edit ? 'Finish' : 'Edit'}
         </button>
