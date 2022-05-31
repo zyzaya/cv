@@ -27,6 +27,7 @@ export default class PersonalInfo extends React.Component {
   render() {
     return (
       <div className="div">
+        <h1>Contact Info</h1>
         <Text
           name="Name"
           type="text"

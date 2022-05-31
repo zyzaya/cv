@@ -54,6 +54,7 @@ export default class EducationInfo extends React.Component {
   render() {
     return (
       <div>
+        <h1>Education</h1>
         <ul>
           {this.state.sections.map((e) => (
             <EducationSection
