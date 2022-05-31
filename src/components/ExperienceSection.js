@@ -4,7 +4,7 @@ import Text from './Text';
 export default class ExperienceSection extends React.Component {
   constructor(props) {
     super(props);
-
+    this.state = { company: '', position: '', start: '', finish: '' };
     this.changeCompany = this.changeCompany.bind(this);
     this.changePosition = this.changePosition.bind(this);
     this.changeStart = this.changeStart.bind(this);
@@ -56,25 +56,25 @@ export default class ExperienceSection extends React.Component {
     return (
       <div>
         <Text
-          name="company"
+          name="Company"
           type="text"
           edit={this.props.edit}
           onChange={this.changeCompany}
         />
         <Text
-          name="position"
+          name="Position"
           type="text"
           edit={this.props.edit}
           onChange={this.changePosition}
         />
         <Text
-          name="start"
+          name="Start"
           type="date"
           edit={this.props.edit}
           onChange={this.changeStart}
         />
         <Text
-          name="finish"
+          name="Finish"
           type="date"
           edit={this.props.edit}
           onChange={this.changeFinish}

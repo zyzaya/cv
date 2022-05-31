@@ -7,6 +7,23 @@ export default class ExperienceInfo extends React.Component {
     super(props);
     this.state = { edit: props.edit, sections: [] };
     this.addSection = this.addSection.bind(this);
+    this.editInfo = this.editInfo.bind(this);
+  }
+
+  editInfo() {
+    if (this.state.edit) {
+      let info = [];
+      this.state.sections.map((val) =>
+        info.push({
+          company: val.company,
+          position: val.position,
+          start: val.start,
+          finish: val.finish,
+        })
+      );
+      this.props.onEdit(info);
+    }
+    this.setState({ edit: !this.state.edit });
   }
 
   addSection() {
@@ -18,6 +35,14 @@ export default class ExperienceInfo extends React.Component {
         start: '',
         finish: '',
       }),
+    }));
+  }
+
+  editSection(key, info) {
+    this.setState((state, props) => ({
+      sections: state.sections.map((e) =>
+        e.key === key ? { key: e.key, ...info } : e
+      ),
     }));
   }
 
