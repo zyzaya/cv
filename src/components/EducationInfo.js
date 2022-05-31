@@ -65,7 +65,6 @@ export default class EducationInfo extends React.Component {
             />
           ))}
         </ul>
-        <div>Education Section</div>
         <button onClick={this.addSection}>Add Section</button>
         <button onClick={this.editInfo}>
           {this.state.edit ? 'Finish' : 'Edit'}
