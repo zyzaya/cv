@@ -39,7 +39,9 @@ export default class EducationInfo extends React.Component {
 
   editSection(key, info) {
     this.setState((state, props) => ({
-      sections: state.sections.map((e) => (e.key === key ? info : e)),
+      sections: state.sections.map((e) =>
+        e.key === key ? { key: e.key, ...info } : e
+      ),
     }));
     console.log(info);
   }
@@ -49,13 +51,11 @@ export default class EducationInfo extends React.Component {
       <div>
         <ul>
           {this.state.sections.map((e) => (
-            <li key={e.key}>
-              <EducationSection
-                key={e.key}
-                edit={this.state.edit}
-                onChange={(info) => this.editSection(e.key, info)}
-              />
-            </li>
+            <EducationSection
+              key={e.key}
+              edit={this.state.edit}
+              onChange={(info) => this.editSection(e.key, info)}
+            />
           ))}
         </ul>
         <div>Education Section</div>
