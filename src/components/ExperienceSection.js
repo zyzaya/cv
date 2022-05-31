@@ -58,25 +58,25 @@ export default class ExperienceSection extends React.Component {
         <Text
           name="company"
           type="text"
-          edit={this.state.edit}
+          edit={this.props.edit}
           onChange={this.changeCompany}
         />
         <Text
           name="position"
           type="text"
-          edit={this.state.edit}
+          edit={this.props.edit}
           onChange={this.changePosition}
         />
         <Text
           name="start"
           type="date"
-          edit={this.state.edit}
+          edit={this.props.edit}
           onChange={this.changeStart}
         />
         <Text
           name="finish"
           type="date"
-          edit={this.state.edit}
+          edit={this.props.edit}
           onChange={this.changeFinish}
         />
         {remove}
