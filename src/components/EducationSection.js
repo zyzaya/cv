@@ -13,19 +13,29 @@ export default class EducationSection extends React.Component {
 
   changeName(value) {
     this.setState({ name: value });
-    this.handleChange();
+    console.log(value);
+    this.handleChange({ name: value });
   }
 
-  changeTitle(value) {}
+  changeTitle(value) {
+    this.setState({ title: value });
+    console.log(value);
+    this.handleChange({ title: value });
+  }
 
-  changeDate(value) {}
+  changeDate(value) {
+    this.setState({ date: value });
+    console.log(value);
+    this.handleChange({ date: value });
+  }
 
-  handleChange() {
+  handleChange(value) {
     let info = {
-      name: this.state.name,
-      title: this.state.title,
-      date: this.state.date,
+      name: value.name || this.state.name,
+      title: value.title || this.state.title,
+      date: value.date || this.state.date,
     };
+    console.log(info);
     this.props.onChange(info);
   }
 
@@ -42,13 +52,13 @@ export default class EducationSection extends React.Component {
           name="Title of Study"
           type="text"
           edit={this.props.edit}
-          onChange={this.handleChange}
+          onChange={this.changeTitle}
         />
         <Text
           name="Date of Study"
           type="date"
           edit={this.props.edit}
-          onChange={this.handleChange}
+          onChange={this.changeDate}
         />
       </div>
     );

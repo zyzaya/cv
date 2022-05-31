@@ -13,7 +13,6 @@ export default class EducationInfo extends React.Component {
   editInfo() {
     if (this.state.edit) {
       let info = [];
-      // for every section add to info
       this.state.sections.map((val) =>
         info.push({
           name: val.name,
@@ -43,11 +42,9 @@ export default class EducationInfo extends React.Component {
         e.key === key ? { key: e.key, ...info } : e
       ),
     }));
-    console.log(info);
   }
 
   render() {
-    console.log(this.state.edit);
     return (
       <div>
         <ul>
