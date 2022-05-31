@@ -1,12 +1,13 @@
+import React from 'react';
 import './App.css';
 import PersonalInfo from './components/PersonalInfo';
 
-function App() {
-  return (
-    <div className="App">
-      <PersonalInfo />
-    </div>
-  );
+export default class App extends React.Component {
+  render() {
+    return (
+      <div className="App">
+        <PersonalInfo edit={true} onEdit={() => console.log('hello')} />
+      </div>
+    );
+  }
 }
-
-export default App;
