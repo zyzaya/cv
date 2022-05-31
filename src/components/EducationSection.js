@@ -4,6 +4,7 @@ import Text from './Text';
 export default class EducationSection extends React.Component {
   constructor(props) {
     super(props);
+    this.state = { edit: props.edit };
   }
 
   render() {
