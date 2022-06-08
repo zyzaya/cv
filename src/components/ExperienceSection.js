@@ -1,5 +1,6 @@
 import React from 'react';
 import Text from './Text';
+import '../styles/ExperienceSection.css';
 
 export default class ExperienceSection extends React.Component {
   constructor(props) {
@@ -54,7 +55,7 @@ export default class ExperienceSection extends React.Component {
     }
 
     return (
-      <div>
+      <div className="ExperienceSection">
         <Text
           name="Company"
           type="text"

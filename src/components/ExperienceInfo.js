@@ -1,6 +1,7 @@
 import React from 'react';
 import uniqid from 'uniqid';
 import ExperienceSection from './ExperienceSection';
+import '../styles/ExperienceInfo.css';
 
 export default class ExperienceInfo extends React.Component {
   constructor(props) {
@@ -55,7 +56,7 @@ export default class ExperienceInfo extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="ExperienceInfo">
         <h1>Experience</h1>
         <ul>
           {this.state.sections.map((e) => (
