@@ -1,87 +1,70 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Text from './Text';
 import '../styles/ExperienceSection.css';
 
-export default class ExperienceSection extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { company: '', position: '', start: '', finish: '' };
-    this.changeCompany = this.changeCompany.bind(this);
-    this.changePosition = this.changePosition.bind(this);
-    this.changeStart = this.changeStart.bind(this);
-    this.changeFinish = this.changeFinish.bind(this);
-    this.handleChange = this.handleChange.bind(this);
-    this.handleDelete = this.handleDelete.bind(this);
+export default function ExperienceSection(props) {
+  const [company, setCompany] = useState('');
+  const [position, setPosition] = useState('');
+  const [start, setStart] = useState('');
+  const [finish, setFinish] = useState('');
+
+  function changeCompany(value) {
+    setCompany(value);
+    handleChange({ company: value });
   }
 
-  changeCompany(value) {
-    this.setState({ company: value });
-    this.handleChange({ company: value });
+  function changePosition(value) {
+    setPosition(value);
+    handleChange({ position: value });
   }
 
-  changePosition(value) {
-    this.setState({ position: value });
-    this.handleChange({ position: value });
+  function changeStart(value) {
+    setStart(value);
+    handleChange({ start: value });
   }
 
-  changeStart(value) {
-    this.setState({ start: value });
-    this.handleChange({ start: value });
+  function changeFinish(value) {
+    setFinish(value);
+    handleChange({ finish: value });
   }
 
-  changeFinish(value) {
-    this.setState({ finish: value });
-    this.handleChange({ finish: value });
-  }
-
-  handleChange(value) {
+  function handleChange(value) {
     let info = {
-      company: value.company || this.state.company,
-      position: value.position || this.state.position,
-      start: value.start || this.state.start,
-      finish: value.finish || this.state.finish,
+      company: value.company || company,
+      position: value.position || position,
+      start: value.start || start,
+      finish: value.finish || finish,
     };
-    this.props.onChange(info);
+    props.onChange(info);
   }
 
-  handleDelete() {
-    this.props.onDelete();
+  let remove = '';
+  if (props.edit) {
+    remove = <button onClick={props.onDelete}>Delete</button>;
   }
 
-  render() {
-    let remove = '';
-    if (this.props.edit) {
-      remove = <button onClick={this.handleDelete}>Delete</button>;
-    }
-
-    return (
-      <div className="ExperienceSection">
-        <Text
-          name="Company"
-          type="text"
-          edit={this.props.edit}
-          onChange={this.changeCompany}
-        />
-        <Text
-          name="Position"
-          type="text"
-          edit={this.props.edit}
-          onChange={this.changePosition}
-        />
-        <Text
-          name="Start"
-          type="date"
-          edit={this.props.edit}
-          onChange={this.changeStart}
-        />
-        <Text
-          name="Finish"
-          type="date"
-          edit={this.props.edit}
-          onChange={this.changeFinish}
-        />
-        {remove}
-      </div>
-    );
-  }
+  return (
+    <div className="ExperienceSection">
+      <Text
+        name="Company"
+        type="text"
+        edit={props.edit}
+        onChange={changeCompany}
+      />
+      <Text
+        name="Position"
+        type="text"
+        edit={props.edit}
+        onChange={changePosition}
+      />
+      <Text name="Start" type="date" edit={props.edit} onChange={changeStart} />
+      <Text
+        name="Finish"
+        type="date"
+        edit={props.edit}
+        onChange={changeFinish}
+      />
+      {remove}
+    </div>
+  );
 }
