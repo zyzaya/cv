@@ -1,0 +1,8 @@
+.EducationInfo {
+  margin: auto;
+  max-width: 450px;
+}
+
+.EducationInfo > h1 {
+  text-decoration: underline;
+}

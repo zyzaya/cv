@@ -1,6 +1,7 @@
 import React from 'react';
 import uniqid from 'uniqid';
 import EducationSection from './EducationSection';
+import '../styles/EducationInfo.css';
 
 export default class EducationInfo extends React.Component {
   constructor(props) {
@@ -53,7 +54,7 @@ export default class EducationInfo extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="EducationInfo">
         <h1>Education</h1>
         <ul>
           {this.state.sections.map((e) => (

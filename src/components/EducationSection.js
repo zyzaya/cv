@@ -1,5 +1,6 @@
 import React from 'react';
 import Text from './Text';
+import '../styles/EducationSection.css';
 
 export default class EducationSection extends React.Component {
   constructor(props) {
@@ -51,7 +52,7 @@ export default class EducationSection extends React.Component {
     }
 
     return (
-      <div>
+      <div className="EducationSection">
         <Text
           name="School Name"
           type="text"
