@@ -4,14 +4,6 @@ import ExperienceSection from './ExperienceSection';
 import '../styles/ExperienceInfo.css';
 
 export default function ExperienceInfo(props) {
-  // constructor(props) {
-  //   super(props);
-  //   this.state = { edit: props.edit, sections: [] };
-  //   this.addSection = this.addSection.bind(this);
-  //   this.editInfo = this.editInfo.bind(this);
-  //   this.deleteSection = this.deleteSection.bind(this);
-  // }
-
   const [edit, setEdit] = useState(props.edit);
   const [sections, setSections] = useState([]);
 
