@@ -1,78 +1,63 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Text from './Text';
 import '../styles/EducationSection.css';
 
-export default class EducationSection extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { name: '', title: '', date: '' };
-    this.changeName = this.changeName.bind(this);
-    this.changeTitle = this.changeTitle.bind(this);
-    this.changeDate = this.changeDate.bind(this);
-    this.handleChange = this.handleChange.bind(this);
-    this.handleDelete = this.handleDelete.bind(this);
+export default function EducationSection(props) {
+  const [name, setName] = useState('');
+  const [title, setTitle] = useState('');
+  const [date, setDate] = useState('');
+
+  function changeName(value) {
+    setName(value);
+    handleChange({ name: value });
   }
 
-  changeName(value) {
-    this.setState({ name: value });
-    console.log(value);
-    this.handleChange({ name: value });
-  }
-
-  changeTitle(value) {
+  function changeTitle(value) {
+    setTitle(value);
     this.setState({ title: value });
-    console.log(value);
-    this.handleChange({ title: value });
+    handleChange({ title: value });
   }
 
-  changeDate(value) {
-    this.setState({ date: value });
-    console.log(value);
-    this.handleChange({ date: value });
+  function changeDate(value) {
+    setDate(value);
+    handleChange({ date: value });
   }
 
-  handleChange(value) {
+  function handleChange(value) {
     let info = {
-      name: value.name || this.state.name,
-      title: value.title || this.state.title,
-      date: value.date || this.state.date,
+      name: value.name || name,
+      title: value.title || title,
+      date: value.date || date,
     };
-    console.log(info);
-    this.props.onChange(info);
+    props.onChange(info);
   }
 
-  handleDelete(e) {
-    this.props.onDelete();
+  let remove = '';
+  if (props.edit) {
+    remove = <button onClick={props.onDelete}>Delete</button>;
   }
 
-  render() {
-    let remove = '';
-    if (this.props.edit) {
-      remove = <button onClick={this.handleDelete}>Delete</button>;
-    }
-
-    return (
-      <div className="EducationSection">
-        <Text
-          name="School Name"
-          type="text"
-          edit={this.props.edit}
-          onChange={this.changeName}
-        />
-        <Text
-          name="Title of Study"
-          type="text"
-          edit={this.props.edit}
-          onChange={this.changeTitle}
-        />
-        <Text
-          name="Date of Study"
-          type="date"
-          edit={this.props.edit}
-          onChange={this.changeDate}
-        />
-        {remove}
-      </div>
-    );
-  }
+  return (
+    <div className="EducationSection">
+      <Text
+        name="School Name"
+        type="text"
+        edit={props.edit}
+        onChange={changeName}
+      />
+      <Text
+        name="Title of Study"
+        type="text"
+        edit={props.edit}
+        onChange={changeTitle}
+      />
+      <Text
+        name="Date of Study"
+        type="date"
+        edit={props.edit}
+        onChange={changeDate}
+      />
+      {remove}
+    </div>
+  );
 }
