@@ -1,4 +1,5 @@
 import React from 'react';
+import '../styles/Text.css';
 
 export default class Text extends React.Component {
   constructor(props) {
@@ -15,7 +16,7 @@ export default class Text extends React.Component {
   render() {
     if (this.props.edit)
       return (
-        <div>
+        <div className="Text">
           <label htmlFor="name">{this.props.name}</label>
           <input
             type={this.props.type}
@@ -26,7 +27,7 @@ export default class Text extends React.Component {
       );
     else
       return (
-        <div className="">
+        <div className="Text">
           <label htmlFor="name">{this.props.name}</label>
           <span>{this.state.value}</span>
         </div>

@@ -1,4 +1,5 @@
 import React from 'react';
+import '../styles/PersonalInfo.css';
 import Text from './Text';
 
 export default class PersonalInfo extends React.Component {
@@ -26,7 +27,7 @@ export default class PersonalInfo extends React.Component {
 
   render() {
     return (
-      <div className="div">
+      <div className="PersonalInfo">
         <h1>Contact Info</h1>
         <Text
           name="Name"
