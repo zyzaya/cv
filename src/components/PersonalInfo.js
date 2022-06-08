@@ -1,56 +1,27 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../styles/PersonalInfo.css';
 import Text from './Text';
 
-export default class PersonalInfo extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      edit: props.edit,
-      name: '',
-      email: '',
-      phone: '',
-    };
-    this.editInfo = this.editInfo.bind(this);
+export default function PersonalInfo(props) {
+  const [edit, setEdit] = useState(props.edit);
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
+
+  function editInfo() {
+    if (edit) props.onEdit({ name, email, phone });
+    setEdit(!edit);
   }
 
-  editInfo() {
-    if (this.state.edit) {
-      let info = {};
-      info.name = this.state.name;
-      info.email = this.state.email;
-      info.phone = this.state.phone;
-      this.props.onEdit(info);
-    }
-    this.setState({ edit: !this.state.edit });
-  }
-
-  render() {
-    return (
-      <div className="PersonalInfo">
-        <h1>Contact Info</h1>
-        <Text
-          name="Name"
-          type="text"
-          edit={this.state.edit}
-          onChange={(val) => this.setState({ name: val })}
-        />
-        <Text
-          name="Email"
-          type="email"
-          edit={this.state.edit}
-          onChange={(val) => this.setState({ email: val })}
-        />
-        <Text
-          name="Phone Number"
-          type="tel"
-          edit={this.state.edit}
-          onChange={(val) => this.setState({ phone: val })}
-        />
-        <button type="submit" onClick={this.editInfo}>
-          {this.state.edit ? 'Finish' : 'Edit'}
-        </button>
-      </div>
-    );
-  }
+  return (
+    <div className="PersonalInfo">
+      <h1>Contact Info</h1>
+      <Text name="Name" type="text" edit={edit} onChange={setName} />
+      <Text name="Email" type="email" edit={edit} onChange={setEmail} />
+      <Text name="Phone Number" type="tel" edit={edit} onChange={setPhone} />
+      <button type="submit" onClick={editInfo}>
+        {edit ? 'Finish' : 'Edit'}
+      </button>
+    </div>
+  );
 }
